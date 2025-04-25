@@ -1,12 +1,11 @@
-# Use latest Node.js LTS
 FROM node:22
 
 LABEL authors="rsruman"
 
-# Set working directory inside the container
+# Set working directory
 WORKDIR /app
 
-# Copy all frontend source code into the container
+# Copy all frontend source code
 COPY . .
 
 # Install dependencies
