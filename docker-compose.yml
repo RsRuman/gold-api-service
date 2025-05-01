@@ -35,7 +35,7 @@ services:
     restart: unless-stopped
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: test_app
+      MYSQL_DATABASE: gold_api_service
     ports:
       - "3307:3306"
     volumes:
