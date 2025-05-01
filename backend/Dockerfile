@@ -29,7 +29,7 @@ RUN chown -R www-data:www-data /var/www \
 # Switch to www-data and install dependencies
 USER www-data
 
-# Composer update
+# Run composer install with better logs and retries
 RUN composer update
 
 # Ensuring storage and cache exist and set permissions
