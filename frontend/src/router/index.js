@@ -8,11 +8,6 @@ import Term from '@/views/Term.vue';
 
 const routes = [
     {
-        path: '/',
-        name: 'App',
-        component: App
-    },
-    {
         path: '/docs',
         name: 'Doc',
         component: Doc
