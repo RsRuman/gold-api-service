@@ -22,6 +22,8 @@ const isOpen = ref(false);
         <li><RouterLink to="/services" class="hover:underline">Service</RouterLink></li>
         <li><RouterLink to="/about" class="hover:underline">About</RouterLink></li>
         <li><RouterLink to="/terms" class="hover:underline">Term</RouterLink></li>
+        <li><RouterLink to="/packages" class="hover:underline">Package</RouterLink></li>
+        <li><RouterLink to="/login" class="hover:underline">Login</RouterLink></li>
       </ul>
     </div>
     <!-- Mobile Menu -->
@@ -30,6 +32,8 @@ const isOpen = ref(false);
       <li><RouterLink to="/services" class="block hover:underline">Service</RouterLink></li>
       <li><RouterLink to="/about" class="block hover:underline">About</RouterLink></li>
       <li><RouterLink to="/terms" class="block hover:underline">Term</RouterLink></li>
+      <li><RouterLink to="/packages" class="block hover:underline">Package</RouterLink></li>
+      <li><RouterLink to="/login" class="block hover:underline">Login</RouterLink></li>
     </ul>
   </nav>
 </template>
