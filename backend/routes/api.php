@@ -7,8 +7,8 @@ use Illuminate\Support\Facades\Route;
 
 // Public routes
 Route::group(['prefix' => 'v1/', 'middleware' => 'api'], function () {
-    Route::post('sign-up', [AuthenticationController::class, 'signUp']);
-    Route::post('login', [AuthenticationController::class, 'login']);
+    Route::post('/sign-up', [AuthenticationController::class, 'signUp']);
+    Route::post('/login', [AuthenticationController::class, 'login']);
 
     Route::post('/stripe/webhook', [SubscriptionController::class, 'webhook']);
 });
@@ -16,7 +16,8 @@ Route::group(['prefix' => 'v1/', 'middleware' => 'api'], function () {
 // Private routes
 Route::group(['prefix' => 'v1/', 'middleware' => ['auth:sanctum']], function () {
     // Logout
-    Route::post('logout', [AuthenticationController::class, 'logout']);
+    Route::post('/logout', [AuthenticationController::class, 'logout']);
+    Route::get('/me', [AuthenticationController::class, 'me']);
 
     Route::post('/subscribe', [SubscriptionController::class, 'subscribe']);
     Route::get('/subscribe/{id}', [SubscriptionController::class, 'getUserSubscription']);

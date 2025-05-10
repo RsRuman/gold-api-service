@@ -11,4 +11,5 @@ interface AuthenticationRepositoryInterface
     public function getToken(array $data);
 
     public function deleteToken(Model|Builder $user);
+    public function myInfo(Model|Builder $user);
 }

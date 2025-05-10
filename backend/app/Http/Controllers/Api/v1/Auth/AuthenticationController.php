@@ -81,4 +81,19 @@ class AuthenticationController extends Controller
             'message' => 'Logout successful.'
         ], HttpResponse::HTTP_OK);
     }
+
+    /**
+     * Auth user info
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function me(Request $request): JsonResponse
+    {
+        $me = $this->repository->myInfo($request->user());
+
+        return Response::json([
+            'message' => 'Profile information get successfully.',
+            'data' => $me
+        ], HttpResponse::HTTP_OK);
+    }
 }

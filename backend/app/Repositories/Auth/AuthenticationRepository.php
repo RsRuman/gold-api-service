@@ -30,4 +30,9 @@ class AuthenticationRepository implements AuthenticationRepositoryInterface
     {
         return $user->currentAccessToken()->delete();
     }
+
+    public function myInfo(Model|Builder $user)
+    {
+        return $user;
+    }
 }
