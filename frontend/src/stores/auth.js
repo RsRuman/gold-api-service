@@ -1,4 +1,5 @@
 import { defineStore } from 'pinia';
+import piniaPluginPersistedstate from 'pinia-plugin-persistedstate';
 import axios from 'axios';
 
 export const useAuthStore = defineStore('auth', {
@@ -11,9 +12,10 @@ export const useAuthStore = defineStore('auth', {
         // Login
         async login(credentials) {
             const response = await axios.post(`${import.meta.env.VITE_API_URL}/login`, credentials);
-            localStorage.setItem('token', this.token);
 
-            axios.defaults.headers.common['Authorization'] = `Bearer ${this.token}`;
+            this.token = response.data.token;
+            localStorage.setItem('token', this.token);
+            axios.defaults.headers.common.Authorization = `Bearer ${this.token}`;
         },
 
         // Get auth user info
@@ -30,4 +32,5 @@ export const useAuthStore = defineStore('auth', {
             delete axios.defaults.headers.common['Authorization'];
         },
     },
+    persist: true
 })

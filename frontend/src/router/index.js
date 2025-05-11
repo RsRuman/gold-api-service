@@ -8,6 +8,7 @@ import Term from '@/views/Term.vue';
 import Package from '@/views/Package.vue';
 import Login from '@/views/Login.vue';
 import Register from '@/views/Register.vue';
+import Profile from '@/views/UserProfile.vue';
 
 const routes = [
     {
@@ -31,19 +32,27 @@ const routes = [
         component: Term
     },
     {
-        path : '/packages',
-        name : 'Package',
+        path: '/packages',
+        name: 'Package',
         component: Package
     },
     {
-        path : '/login',
-        name : 'Login',
-        component: Login
+        path: '/login',
+        name: 'Login',
+        component: Login,
+        meta: { guestOnly: true }
     },
     {
-        path : '/register',
-        name : 'Register',
-        component: Register
+        path: '/register',
+        name: 'Register',
+        component: Register,
+        meta: { guestOnly: true }
+    },
+    {
+        path: '/profile',
+        name: 'Profile',
+        component: Profile,
+        meta: { requiresAuth: true }
     }
 ]
 
@@ -52,4 +61,17 @@ const router = createRouter({
     routes
 })
 
-export default router
+// Global middleware guard
+router.beforeEach((to, from, next) => {
+    const isAuthenticated = !!localStorage.getItem('token');
+
+    if (to.meta.requiresAuth && !isAuthenticated) {
+        next({ name: 'Login' });
+    } else if (to.meta.guestOnly && isAuthenticated) {
+        next({ name: 'Profile' });
+    } else {
+        next();
+    }
+});
+
+export default router;

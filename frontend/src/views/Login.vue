@@ -2,11 +2,14 @@
 import { useAuthStore } from '@/stores/auth.js';
 import { ref } from 'vue';
 import { Toast } from '@/utils/toast.js';
+import { useRouter } from 'vue-router';
+
 
 const auth = useAuthStore();
 
 const email = ref('');
 const password = ref('');
+const router = useRouter();
 
 const login = async () => {
   const credentials = {
@@ -23,7 +26,7 @@ const login = async () => {
       title: 'Login successful!',
     });
 
-    console.log('Logged in user:', auth.user);
+    router.push({ name: 'Profile' });
   } catch (error) {
     const message = error?.response?.data?.message || 'Login failed. Please try again.';
 
